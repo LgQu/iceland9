@@ -143,6 +143,85 @@ h3 { font-size: 21px; }
   font-size: 14px;
 }
 
+.hotel-map-marker {
+  display: grid;
+  place-items: center;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  background: #182126;
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(24, 33, 38, .28);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.route-time-marker {
+  pointer-events: none;
+}
+
+.route-time-marker span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  width: max-content;
+  max-width: 160px;
+  padding: 5px 8px;
+  border: 2px solid;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .92);
+  box-shadow: 0 4px 12px rgba(24, 33, 38, .14);
+  color: #1f2d33;
+  font-size: 11px;
+  line-height: 1.2;
+  white-space: normal;
+}
+
+.route-time-marker strong {
+  flex: 0 0 auto;
+  color: #182126;
+}
+
+.route-map-legend {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 5px 9px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 8px 18px rgba(24, 33, 38, .12);
+  color: #26363d;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.route-map-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.route-map-legend i,
+.route-map-legend b {
+  width: 14px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 999px;
+}
+
+.route-map-legend b {
+  height: 14px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 4px;
+  background: #182126;
+  color: #fff;
+  font-size: 10px;
+  line-height: 1;
+}
+
 .toolbar {
   display: flex;
   justify-content: flex-end;
@@ -302,8 +381,18 @@ li { margin: 4px 0; }
 
 .attraction-summary strong {
   display: inline-block;
-  margin-right: 8px;
   font-size: 16px;
+}
+
+.attraction-summary-content {
+  min-width: 0;
+}
+
+.attraction-heading {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
 }
 
 .attraction-title-link {
@@ -321,7 +410,6 @@ li { margin: 4px 0; }
 .attraction-tag {
   display: inline-flex;
   align-items: center;
-  margin-right: 8px;
   padding: 3px 7px;
   border-radius: 999px;
   background: #e7efeb;
@@ -489,6 +577,12 @@ li { margin: 4px 0; }
 }
 
 .button.secondary:hover { background: #d7e7e5; }
+
+.button.compact {
+  min-height: 28px;
+  padding: 4px 9px;
+  font-size: 12px;
+}
 
 .decision-panel { margin-top: 28px; }
 

@@ -11,6 +11,16 @@ const itinerary = [
     optional: ["Sky Lagoon。若到达晚或疲劳，直接休息。"],
     notes: ["当天不要安排长途，第二天开始每天都比较满。"],
     cut: [],
+    accommodation: {
+      name: "Hotel Leifur Eiriksson",
+      tag: "住宿",
+      image: "https://commons.wikimedia.org/wiki/Special:FilePath/Reykjavik%20from%20Hallgrimskirkja.jpg",
+      intro: "Day 1 与 Day 8 的雷克雅未克住宿，位置靠近 Hallgrimskirkja，适合抵达日轻松入住，也方便步行逛市中心。",
+      stay: "6月21日-6月22日",
+      highlights: ["Hotel Leifur Eiriksson / 雷弗艾瑞克森酒店。", "靠近哈尔格林姆教堂和市中心步行区。"],
+      tips: ["抵达日优先办理入住、停车和补给；市中心停车规则按酒店说明确认。"],
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Hotel+Leifur+Eiriksson+Reykjavik"
+    },
     attractions: [
       {
         name: "Hallgrimskirkja",
@@ -59,6 +69,16 @@ const itinerary = [
     optional: ["Kerid 火山口，顺路且停留时间短。", "若精力足，可把 Seljalandsfoss 提前到今天傍晚看。"],
     notes: [],
     cut: ["Bruarfoss。环岛版时间紧，它好看但不应挤掉三大经典。"],
+    accommodation: {
+      name: "Hotel Eyjafjallajokull",
+      tag: "住宿",
+      image: "https://commons.wikimedia.org/wiki/Special:FilePath/Eyjafjallaj%C3%B6kull%20from%20the%20sea.jpg",
+      intro: "Day 2 住宿，作为黄金圈之后进入南岸的落脚点。住在南岸门户附近，第二天可以更早开始瀑布和黑沙滩行程。",
+      stay: "6月22日-6月23日",
+      highlights: ["Hotel Eyjafjallajokull / 埃亚菲亚德拉库尔酒店。", "适合作为黄金圈与南岸之间的过夜点。"],
+      tips: ["从 Kerid 或 Selfoss 一带继续开到酒店，晚餐和加油建议提前规划。"],
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Hotel+Eyjafjallajokull"
+    },
     attractions: [
       {
         name: "Thingvellir 国家公园",
@@ -117,6 +137,16 @@ const itinerary = [
     optional: ["Dyrholaey 远眺黑沙滩，天气好再加。"],
     notes: ["这是全程最硬的一天之一。建议早出发，午餐简单解决，别安排冰川徒步。", "住宿尽量订 Hofn 或冰川湖附近，第二天环东峡湾更顺。", "黑沙滩安全优先，不要靠近水线。"],
     cut: ["Kvernufoss → Dyrholaey → Fjadrargljufur"],
+    accommodation: {
+      name: "Guesthouse Hvammur",
+      tag: "住宿",
+      image: "https://commons.wikimedia.org/wiki/Special:FilePath/H%C3%B6fn%20Iceland.jpg",
+      intro: "Day 3 住宿，位于 Hofn 一带，适合结束南岸长距离推进后休整。第二天从这里继续进入东南角和东峡湾。",
+      stay: "6月23日-6月24日",
+      highlights: ["Guesthouse Hvammur / 哈莫宾馆。", "Hofn 区域住宿，便于衔接 Stokksnes 和东峡湾。"],
+      tips: ["这天路程很长，建议抵达前确认晚餐时间；Hofn 餐厅热门时段可能需要预订。"],
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Guesthouse+Hvammur+Hofn"
+    },
     attractions: [
       {
         name: "Seljalandsfoss",
@@ -195,6 +225,16 @@ const itinerary = [
     optional: ["Seydisfjordur 彩虹街和小镇港口。", "若天气好，可选择 Oxi Pass；若雨雾大，走一号公路主线更稳。"],
     notes: [],
     cut: ["Seydisfjordur。如果风雨大或山路云雾重，直接住 Egilsstadir。"],
+    accommodation: {
+      name: "Hildibrand Apartment Hotel",
+      tag: "住宿",
+      image: "https://commons.wikimedia.org/wiki/Special:FilePath/Eastfjords%20Iceland.jpg",
+      intro: "Day 4 住宿，位于东峡湾区域。它比 Egilsstadir 更深入峡湾地形，适合把东部小镇和海岸线体验延伸到晚上。",
+      stay: "6月24日-6月25日",
+      highlights: ["Hildibrand Apartment Hotel / 希尔迪布兰德公寓酒店。", "东峡湾住宿点，适合安排行程末段抵达。"],
+      tips: ["若当天风雨、山路云雾或疲劳明显，务必按路况调整 Seydisfjordur 和支线停留。"],
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Hildibrand+Apartment+Hotel"
+    },
     attractions: [
       {
         name: "Stokksnes / Vestrahorn",
@@ -243,6 +283,16 @@ const itinerary = [
     optional: ["Krafla/Viti 火山口", "Dimmuborgir 黑色熔岩城", "想观鲸可住 Husavik，但会让这天更满；想稳一点住 Myvatn。"],
     notes: ["Dettifoss 有东西两侧道路，按当天开放和路况选择；不要只看导航预计时间。"],
     cut: ["Krafla/Viti → Dimmuborgir → Husavik 观鲸。保留 Dettifoss、Hverir、Godafoss。"],
+    accommodation: {
+      name: "Skulagardur Country Hotel & Restaurant",
+      tag: "住宿",
+      image: "https://commons.wikimedia.org/wiki/Special:FilePath/H%C3%BAsav%C3%ADk%20Iceland.jpg",
+      intro: "Day 5 住宿，位于北部乡村区域，适合结束 Dettifoss、米湖、Godafoss 或 Husavik 后休整。",
+      stay: "6月25日-6月26日",
+      highlights: ["Skulagardur Country Hotel & Restaurant / 乡村酒店和餐厅。", "北部住宿点，适合把当天节奏从景点切换到休息。"],
+      tips: ["乡村区域餐饮选择有限，建议确认酒店餐厅营业时间或提前备好晚餐。"],
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Sk%C3%BAlagar%C3%B0ur+Country+Hotel+Restaurant"
+    },
     attractions: [
       {
         name: "Dettifoss",
@@ -311,6 +361,16 @@ const itinerary = [
     optional: ["Glaumbaer 草皮屋，能补足人文景观。", "Hvitserkur 和 Kolugljufur 二选一即可，别两个都硬塞。"],
     notes: [],
     cut: ["Trollaskagi 半岛绕行。风景好，但会显著增加车程。"],
+    accommodation: {
+      name: "Hotel Hvitserkur",
+      tag: "住宿",
+      image: "https://commons.wikimedia.org/wiki/Special:FilePath/Hvitserkur%20Iceland.jpg",
+      intro: "Day 6 住宿，位于西北部 Hvitserkur / Vatnsnes 一带，方便把北部西行和犀牛石区域衔接起来。",
+      stay: "6月26日-6月27日",
+      highlights: ["Hotel Hvitserkur / 华姆斯唐吉酒店。", "靠近西北部海岸与 Hvitserkur 区域。"],
+      tips: ["如果当天已经看过 Hvitserkur，可直接入住；若到得早，也可以把犀牛石留到清晨补看。"],
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=H%C3%B3tel+Hv%C3%ADtserkur"
+    },
     attractions: [
       {
         name: "Akureyri",
@@ -369,6 +429,16 @@ const itinerary = [
     optional: ["Ytri Tunga 海豹点", "Budakirkja 黑教堂", "如果北部出发太晚，直接去 Kirkjufell，把半岛南岸留给 Day 8 早上。"],
     notes: ["这天的重点是“到达斯奈山半岛并看草帽山”，不要被沿途小点拖慢。"],
     cut: ["Ytri Tunga → Budakirkja → Djupalonssandur。保留 Arnarstapi 和 Kirkjufell。"],
+    accommodation: {
+      name: "Guesthouse Hof",
+      tag: "住宿",
+      image: "https://commons.wikimedia.org/wiki/Special:FilePath/Kirkjufell%20and%20Kirkjufellsfoss%2C%20Iceland.jpg",
+      intro: "Day 7 住宿，位于斯奈山半岛区域，适合在半岛南岸、Kirkjufell 和第二天补点之间做中转。",
+      stay: "6月27日-6月28日",
+      highlights: ["Guesthouse Hof / 霍夫旅馆。", "斯奈山半岛住宿点，便于第二天继续补完半岛景点。"],
+      tips: ["半岛天气变化快，入住前后可按光线和风况调整 Kirkjufell 或南岸海岸点。"],
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Guesthouse+Hof+Iceland"
+    },
     attractions: [
       {
         name: "Ytri Tunga",
@@ -427,6 +497,16 @@ const itinerary = [
     optional: ["Stykkisholmur 港口小镇，若你更想悠闲午餐可走北岸。", "晚上建议住 Keflavik 或 Reykjavik，不要住太远。"],
     notes: [],
     cut: ["Stykkisholmur 或 Djupalonssandur。若航班早，Day 8 晚直接住 Keflavik。"],
+    accommodation: {
+      name: "Hotel Leifur Eiriksson",
+      tag: "住宿",
+      image: "https://commons.wikimedia.org/wiki/Special:FilePath/Reykjavik%20from%20Hallgrimskirkja.jpg",
+      intro: "Day 8 回到雷克雅未克的住宿，和抵达日同一家酒店，方便整理行李、补给和第二天前往 Reykjanes 半岛。",
+      stay: "6月28日-6月29日",
+      highlights: ["Hotel Leifur Eiriksson / 雷弗艾瑞克森酒店。", "回到首都圈，便于第二天安排蓝湖或 Reykjanes 短线。"],
+      tips: ["回城日容易疲劳，晚餐、停车和行李整理优先，不建议再安排太多市区活动。"],
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Hotel+Leifur+Eiriksson+Reykjavik"
+    },
     attractions: [
       {
         name: "Djupalonssandur",
@@ -476,6 +556,16 @@ const itinerary = [
     optional: ["航班较晚：预约 Blue Lagoon，泡完去机场。", "航班较早：只做 Gunnuhver、Bridge Between Continents 等短停。"],
     notes: ["还车、加油、退税和行李整理至少留 2.5-3 小时。", "Reykjanes 近年火山活动频繁，蓝湖和道路开放情况请当天确认。"],
     cut: [],
+    accommodation: {
+      name: "Grindavik Guesthouse",
+      tag: "住宿",
+      image: "https://commons.wikimedia.org/wiki/Special:FilePath/Blue%20Lagoon%2C%20Iceland%20%282017%29.jpg",
+      intro: "Day 9 住宿，位于 Grindavik / Reykjanes 区域，适合把蓝湖或半岛短线安排在返程前后。",
+      stay: "6月29日-6月30日",
+      highlights: ["Grindavik Guesthouse / 格林达维克旅馆。", "靠近 Reykjanes 半岛与蓝湖区域。"],
+      tips: ["Grindavik 周边受 Reykjanes 火山活动影响较多，入住前务必确认道路、警报和酒店运营状态。"],
+      mapUrl: "https://www.google.com/maps/search/?api=1&query=Grindavik+Guesthouse"
+    },
     attractions: [
       {
         name: "Blue Lagoon",
