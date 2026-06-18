@@ -33,6 +33,7 @@ function renderLinks(links) {
 
 function imageKind(label) {
   const text = String(label || "").toLowerCase();
+  if (/fuel|加油|n1|orkan|atlantsol/.test(text)) return "town";
   if (/foss|瀑布|gullfoss|skogafoss|seljalandsfoss|godafoss|dettifoss/.test(text)) return "waterfall";
   if (/jokulsarlon|diamond|glacier|冰川|蓝湖|lagoon/.test(text)) return "glacier";
   if (/reynis|beach|sand|海滩|黑沙|djupalon/.test(text)) return "beach";
@@ -140,7 +141,23 @@ const attractionNames = {
   "Skulagardur Country Hotel & Restaurant": "Skulagardur Country Hotel & Restaurant（乡村酒店和餐厅）",
   "Hotel Hvitserkur": "Hotel Hvitserkur（华姆斯唐吉酒店）",
   "Guesthouse Hof": "Guesthouse Hof（霍夫旅馆）",
-  "Grindavik Guesthouse": "Grindavik Guesthouse（格林达维克旅馆）"
+  "Grindavik Guesthouse": "Grindavik Guesthouse（格林达维克旅馆）",
+  "N1 Reykjavik": "N1 Reykjavik（雷克雅未克加油站）",
+  "N1 Keflavik": "N1 Keflavik（凯夫拉维克加油站）",
+  "N1 Selfoss": "N1 Selfoss（塞尔福斯加油站）",
+  "N1 Hvolsvollur": "N1 Hvolsvollur（霍尔斯沃德吕尔加油站）",
+  "N1 Vik": "N1 Vik（维克加油站）",
+  "N1 Kirkjubaejarklaustur": "N1 Kirkjubaejarklaustur（教堂城加油站）",
+  "N1 Hofn": "N1 Hofn（赫本加油站）",
+  "N1 Egilsstadir": "N1 Egilsstadir（埃伊尔斯塔济加油站）",
+  "N1 Reykjahlid / Myvatn": "N1 Reykjahlid / Myvatn（雷克雅利兹 / 米湖加油站）",
+  "N1 Husavik": "N1 Husavik（胡萨维克加油站）",
+  "N1 Akureyri": "N1 Akureyri（阿克雷里加油站）",
+  "N1 Blonduos": "N1 Blonduos（布伦迪欧斯加油站）",
+  "N1 Borgarnes": "N1 Borgarnes（博尔加内斯加油站）",
+  "N1 Grundarfjordur": "N1 Grundarfjordur（格伦达菲厄泽加油站）",
+  "Orkan Stykkisholmur": "Orkan Stykkisholmur（斯蒂基斯霍尔米加油站）",
+  "Orkan Grindavik": "Orkan Grindavik（格林达维克加油站）"
 };
 
 globalThis.attractionNames = attractionNames;
@@ -287,8 +304,9 @@ function renderAttraction(attraction, dayNumber, index) {
   const id = `day-${dayNumber}-attraction-${index + 1}`;
   const googleMapUrl = attraction.mapUrl || googleMapsSearchUrl(attraction.name);
   const englishName = attractionMapQuery(attraction);
+  const typeClass = attraction.type ? `is-${attraction.type}` : "";
   return `
-    <article class="attraction" id="${id}">
+    <article class="attraction ${typeClass}" id="${id}">
       <div class="attraction-summary" role="button" tabindex="0" aria-expanded="false" aria-controls="${id}-details">
         <span class="attraction-summary-content">
           <span class="attraction-heading">
@@ -312,8 +330,8 @@ function renderAttraction(attraction, dayNumber, index) {
   `;
 }
 
-function renderDriveLeg(day, attractions, index) {
-  const leg = driveLegs[day.day]?.[index];
+function renderDriveLeg(day, attractions, index, legIndex = index) {
+  const leg = driveLegs[day.day]?.[legIndex];
   const nextAttraction = attractions[index + 1];
   if (!leg || !nextAttraction) return "";
   const from = displayAttractionName(attractions[index].name);
@@ -331,8 +349,12 @@ function renderDriveLeg(day, attractions, index) {
 }
 
 function renderAttractions(day) {
-  const attractions = [...(day.attractions || []), ...(day.accommodation ? [day.accommodation] : [])];
-  if (attractions.length === 0) return "";
+  const attractions = day.attractions || [];
+  const fuelStops = day.fuelStops || [];
+  const accommodation = day.accommodation;
+  if (attractions.length === 0 && fuelStops.length === 0 && !accommodation) return "";
+  const finalLegIndex = attractions.length - 1;
+  const finalLegItems = accommodation && attractions.length > 0 ? [attractions[attractions.length - 1], accommodation] : [];
   return `
     <section class="attractions">
       <h4>景点详情</h4>
@@ -341,6 +363,9 @@ function renderAttractions(day) {
           ${renderAttraction(attraction, day.day, index)}
           ${renderDriveLeg(day, attractions, index)}
         `).join("")}
+        ${fuelStops.map((fuelStop, index) => renderAttraction(fuelStop, day.day, attractions.length + index)).join("")}
+        ${accommodation && finalLegItems.length > 0 ? renderDriveLeg(day, finalLegItems, 0, finalLegIndex) : ""}
+        ${accommodation ? renderAttraction(accommodation, day.day, attractions.length + fuelStops.length) : ""}
       </div>
     </section>
   `;

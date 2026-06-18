@@ -1,3 +1,103 @@
+const fuelStopCatalog = {
+  "N1 Reykjavik": {
+    zh: "雷克雅未克加油站",
+    area: "首都圈出发或回城补给点",
+    mapQuery: "N1 Reykjavik Iceland"
+  },
+  "N1 Keflavik": {
+    zh: "凯夫拉维克加油站",
+    area: "机场取还车前后补油",
+    mapQuery: "N1 Keflavik Iceland"
+  },
+  "N1 Selfoss": {
+    zh: "塞尔福斯加油站",
+    area: "黄金圈后进入南岸前补给",
+    mapQuery: "N1 Selfoss Iceland"
+  },
+  "N1 Hvolsvollur": {
+    zh: "霍尔斯沃德吕尔加油站",
+    area: "南岸瀑布前后补给",
+    mapQuery: "N1 Hvolsvollur Iceland"
+  },
+  "N1 Vik": {
+    zh: "维克加油站",
+    area: "黑沙滩与南岸中段补给",
+    mapQuery: "N1 Vik Iceland"
+  },
+  "N1 Kirkjubaejarklaustur": {
+    zh: "教堂城加油站",
+    area: "南岸长距离路段中继补给",
+    mapQuery: "N1 Kirkjubaejarklaustur Iceland"
+  },
+  "N1 Hofn": {
+    zh: "赫本加油站",
+    area: "东南角和东峡湾前后补给",
+    mapQuery: "N1 Hofn Iceland"
+  },
+  "N1 Egilsstadir": {
+    zh: "埃伊尔斯塔济加油站",
+    area: "东部进入北部荒原前补给",
+    mapQuery: "N1 Egilsstadir Iceland"
+  },
+  "N1 Reykjahlid / Myvatn": {
+    zh: "雷克雅利兹 / 米湖加油站",
+    area: "米湖区域补给点",
+    mapQuery: "N1 Reykjahlid Myvatn Iceland"
+  },
+  "N1 Husavik": {
+    zh: "胡萨维克加油站",
+    area: "北部海岸和观鲸小镇补给",
+    mapQuery: "N1 Husavik Iceland"
+  },
+  "N1 Akureyri": {
+    zh: "阿克雷里加油站",
+    area: "北部中心城市补给",
+    mapQuery: "N1 Akureyri Iceland"
+  },
+  "N1 Blonduos": {
+    zh: "布伦迪欧斯加油站",
+    area: "北部西行中继补给",
+    mapQuery: "N1 Blonduos Iceland"
+  },
+  "N1 Borgarnes": {
+    zh: "博尔加内斯加油站",
+    area: "西部和斯奈山半岛进出补给",
+    mapQuery: "N1 Borgarnes Iceland"
+  },
+  "N1 Grundarfjordur": {
+    zh: "格伦达菲厄泽加油站",
+    area: "斯奈山半岛北岸补给",
+    mapQuery: "N1 Grundarfjordur Iceland"
+  },
+  "Orkan Stykkisholmur": {
+    zh: "斯蒂基斯霍尔米加油站",
+    area: "斯奈山半岛北岸补给",
+    mapQuery: "Orkan Stykkisholmur Iceland"
+  },
+  "Orkan Grindavik": {
+    zh: "格林达维克加油站",
+    area: "Reykjanes 半岛补给",
+    mapQuery: "Orkan Grindavik Iceland"
+  }
+};
+
+function fuel(...names) {
+  return names.map((name) => {
+    const stop = fuelStopCatalog[name];
+    return {
+      name,
+      type: "fuel",
+      tag: "加油",
+      image: "assets/images/town.svg",
+      intro: `${stop.area}。作为沿途加油和简单补给参考，实际营业状态、油价和支付方式以现场或当天地图信息为准。`,
+      stay: "10-20 分钟",
+      highlights: [`${name} / ${stop.zh}。`, stop.area],
+      tips: ["长距离路段不要等油量过低再找油站；部分自助油站可能需要芯片信用卡或 PIN。"],
+      mapUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(stop.mapQuery)}`
+    };
+  });
+}
+
 const itinerary = [
   {
     day: 1,
@@ -21,6 +121,7 @@ const itinerary = [
       tips: ["抵达日优先办理入住、停车和补给；市中心停车规则按酒店说明确认。"],
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Hotel+Leifur+Eiriksson+Reykjavik"
     },
+    fuelStops: fuel("N1 Keflavik", "N1 Reykjavik"),
     attractions: [
       {
         name: "Hallgrimskirkja",
@@ -79,6 +180,7 @@ const itinerary = [
       tips: ["从 Kerid 或 Selfoss 一带继续开到酒店，晚餐和加油建议提前规划。"],
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Hotel+Eyjafjallajokull"
     },
+    fuelStops: fuel("N1 Selfoss", "N1 Hvolsvollur"),
     attractions: [
       {
         name: "Thingvellir 国家公园",
@@ -147,6 +249,7 @@ const itinerary = [
       tips: ["这天路程很长，建议抵达前确认晚餐时间；Hofn 餐厅热门时段可能需要预订。"],
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Guesthouse+Hvammur+Hofn"
     },
+    fuelStops: fuel("N1 Hvolsvollur", "N1 Vik", "N1 Kirkjubaejarklaustur", "N1 Hofn"),
     attractions: [
       {
         name: "Seljalandsfoss",
@@ -235,6 +338,7 @@ const itinerary = [
       tips: ["若当天风雨、山路云雾或疲劳明显，务必按路况调整 Seydisfjordur 和支线停留。"],
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Hildibrand+Apartment+Hotel"
     },
+    fuelStops: fuel("N1 Hofn", "N1 Egilsstadir"),
     attractions: [
       {
         name: "Stokksnes / Vestrahorn",
@@ -293,6 +397,7 @@ const itinerary = [
       tips: ["乡村区域餐饮选择有限，建议确认酒店餐厅营业时间或提前备好晚餐。"],
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Sk%C3%BAlagar%C3%B0ur+Country+Hotel+Restaurant"
     },
+    fuelStops: fuel("N1 Egilsstadir", "N1 Reykjahlid / Myvatn", "N1 Husavik"),
     attractions: [
       {
         name: "Dettifoss",
@@ -371,6 +476,7 @@ const itinerary = [
       tips: ["如果当天已经看过 Hvitserkur，可直接入住；若到得早，也可以把犀牛石留到清晨补看。"],
       mapUrl: "https://www.google.com/maps/search/?api=1&query=H%C3%B3tel+Hv%C3%ADtserkur"
     },
+    fuelStops: fuel("N1 Akureyri", "N1 Blonduos"),
     attractions: [
       {
         name: "Akureyri",
@@ -439,6 +545,7 @@ const itinerary = [
       tips: ["半岛天气变化快，入住前后可按光线和风况调整 Kirkjufell 或南岸海岸点。"],
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Guesthouse+Hof+Iceland"
     },
+    fuelStops: fuel("N1 Blonduos", "N1 Borgarnes", "N1 Grundarfjordur"),
     attractions: [
       {
         name: "Ytri Tunga",
@@ -507,6 +614,7 @@ const itinerary = [
       tips: ["回城日容易疲劳，晚餐、停车和行李整理优先，不建议再安排太多市区活动。"],
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Hotel+Leifur+Eiriksson+Reykjavik"
     },
+    fuelStops: fuel("N1 Grundarfjordur", "Orkan Stykkisholmur", "N1 Borgarnes", "N1 Reykjavik"),
     attractions: [
       {
         name: "Djupalonssandur",
@@ -566,6 +674,7 @@ const itinerary = [
       tips: ["Grindavik 周边受 Reykjanes 火山活动影响较多，入住前务必确认道路、警报和酒店运营状态。"],
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Grindavik+Guesthouse"
     },
+    fuelStops: fuel("N1 Reykjavik", "Orkan Grindavik", "N1 Keflavik"),
     attractions: [
       {
         name: "Blue Lagoon",
