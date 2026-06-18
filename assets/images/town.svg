@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Iceland town scene">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c5dde1"/>
+      <stop offset=".55" stop-color="#eef5f1"/>
+      <stop offset="1" stop-color="#829878"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sky)"/>
+  <path d="M0 575 C230 490 375 530 560 455 C750 375 940 365 1200 275 L1200 800 L0 800 Z" fill="#324a44"/>
+  <rect x="138" y="480" width="136" height="150" fill="#f7fbfb"/>
+  <rect x="326" y="430" width="165" height="200" fill="#182126"/>
+  <polygon points="115,480 206,405 294,480" fill="#94412f"/>
+  <polygon points="300,430 410,348 520,430" fill="#f7fbfb"/>
+  <rect x="181" y="535" width="32" height="45" fill="#225c68"/>
+  <rect x="380" y="490" width="40" height="58" fill="#dceff3"/>
+  <path d="M0 674 C260 620 450 675 690 622 C890 578 1040 610 1200 560 L1200 800 L0 800 Z" fill="#607b62" opacity=".55"/>
+  <text x="72" y="104" fill="#fff" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="3">ICELAND</text>
+  <text x="72" y="158" fill="#fff" font-family="Arial, sans-serif" font-size="54" font-weight="700">Towns & Churches</text>
+</svg>

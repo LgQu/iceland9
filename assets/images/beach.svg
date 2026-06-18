@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Iceland black sand beach scene">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c4d5d8"/>
+      <stop offset=".62" stop-color="#edf3f0"/>
+      <stop offset="1" stop-color="#2e4247"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sky)"/>
+  <circle cx="940" cy="175" r="58" fill="#f4cf82" opacity=".78"/>
+  <path d="M0 470 C190 420 340 442 515 370 C715 286 930 310 1200 200 L1200 800 L0 800 Z" fill="#26393e"/>
+  <path d="M0 622 C240 555 430 615 650 565 C850 520 1030 548 1200 490 L1200 800 L0 800 Z" fill="#111c20"/>
+  <path d="M0 670 C230 610 420 675 640 625 C850 580 1040 612 1200 570" fill="none" stroke="#f7fbfb" stroke-width="18" opacity=".78"/>
+  <path d="M845 525 L890 350 L936 525 Z M940 520 L985 395 L1035 520 Z" fill="#161f22"/>
+  <text x="72" y="104" fill="#fff" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="3">ICELAND</text>
+  <text x="72" y="158" fill="#fff" font-family="Arial, sans-serif" font-size="54" font-weight="700">Black Sand Coast</text>
+</svg>

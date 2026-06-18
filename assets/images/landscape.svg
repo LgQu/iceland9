@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Iceland landscape scene">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bdd6dc"/>
+      <stop offset=".52" stop-color="#eef5f1"/>
+      <stop offset="1" stop-color="#6f856d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sky)"/>
+  <circle cx="930" cy="245" r="58" fill="#f3cc7a" opacity=".8"/>
+  <path d="M0 590 C190 510 335 545 520 465 C720 378 900 390 1200 290 L1200 800 L0 800 Z" fill="#2f4749" opacity=".86"/>
+  <path d="M0 685 C210 610 410 690 620 626 C810 570 1010 625 1200 540 L1200 800 L0 800 Z" fill="#607b62" opacity=".68"/>
+  <path d="M0 735 C240 700 400 748 650 710 C860 678 1020 700 1200 660 L1200 800 L0 800 Z" fill="#225c68" opacity=".5"/>
+  <text x="72" y="104" fill="#fff" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="3">ICELAND</text>
+  <text x="72" y="158" fill="#fff" font-family="Arial, sans-serif" font-size="54" font-weight="700">Ring Road</text>
+</svg>

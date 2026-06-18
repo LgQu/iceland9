@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>冰岛 8 天半环岛自驾规划 | 2026.6.21-6.29</title>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://tile.openstreetmap.org">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">2026.6.21 - 6.29 | 8 天半 | 首次冰岛自驾</p>
+      <h1>冰岛 8 天半经典环岛自驾规划</h1>
+      <p>偏紧凑但可执行的 Ring Road 方案。经典景点尽量收进去，并标出每天的删减优先级，方便你按天气和体力现场取舍。</p>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="overview">
+      <div class="panel">
+        <h2>路线策略</h2>
+        <p>这版按顺时针相反方向，也就是从黄金圈和南岸先出发，沿一号公路走东峡湾、北部米湖、阿克雷里，再回西部和斯奈山半岛。它比非环岛版更累，但能满足“完整环岛”的愿望；6 月下旬白昼很长，是这种安排能成立的关键。</p>
+        <div class="pill-row">
+          <span class="pill">完整环岛</span>
+          <span class="pill">经典景点优先</span>
+          <span class="pill">SUV/4x4 适用</span>
+          <span class="pill">每天约 3-6 小时车程</span>
+          <span class="pill">含删减建议</span>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>约 2,200-2,450 km</strong>全程估算驾驶里程</div>
+          <div class="stat"><strong>8 个住宿区</strong>基本每天换酒店</div>
+          <div class="stat"><strong>29-35 小时</strong>总驾驶时间估算</div>
+          <div class="stat"><strong>0 个必走 F 路</strong>环岛主线不依赖高地路</div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>住宿建议</h2>
+        <ul>
+          <li>6/21：雷克雅未克</li>
+          <li>6/22：Hella / Selfoss</li>
+          <li>6/23：Hofn 或 Jokulsarlon 周边</li>
+          <li>6/24：Egilsstadir / Seydisfjordur</li>
+          <li>6/25：Myvatn / Husavik</li>
+          <li>6/26：Akureyri / Blonduos / Hvammstangi</li>
+          <li>6/27：Grundarfjordur / Stykkisholmur</li>
+          <li>6/28：Reykjavik / Keflavik</li>
+        </ul>
+        <p class="note">环岛版住宿不要随意后移：只要某天没开到目标住宿区，后面两天都会连锁变紧。</p>
+      </div>
+    </section>
+
+    <section class="map-wrap">
+      <div id="map"></div>
+      <div class="map-note">地图展示环岛主线和重点停留点；实际导航请以当天路况、天气和 Google Maps 为准。</div>
+    </section>
+
+    <section class="toolbar" aria-label="行程显示控制">
+      <button class="button" type="button" id="expandAll">全部展开</button>
+      <button class="button secondary" type="button" id="collapseAll">全部收起</button>
+    </section>
+
+    <section class="days" id="days" aria-label="每日行程"></section>
+
+    <section class="panel decision-panel">
+      <h2>环岛版取舍原则</h2>
+      <div class="safety-grid">
+        <div>
+          <h3>必须保留</h3>
+          <ul>
+            <li>黄金圈三大点。</li>
+            <li>南岸两瀑布、黑沙滩。</li>
+            <li>Jokulsarlon 与 Diamond Beach。</li>
+            <li>Dettifoss、Myvatn、Godafoss。</li>
+            <li>Kirkjufell 与斯奈山半岛核心海岸。</li>
+          </ul>
+        </div>
+        <div>
+          <h3>优先删减</h3>
+          <ul>
+            <li>Bruarfoss、Kvernufoss。</li>
+            <li>Skaftafell 长徒步或冰川徒步。</li>
+            <li>Seydisfjordur 往返。</li>
+            <li>Husavik 观鲸。</li>
+            <li>Trollaskagi 半岛绕行。</li>
+          </ul>
+        </div>
+        <div>
+          <h3>每天出发前</h3>
+          <ul>
+            <li>查 <a href="https://umferdin.is/en" target="_blank">umferdin.is</a> 路况。</li>
+            <li>查 <a href="https://safetravel.is/travel-conditions/" target="_blank">Safetravel</a> 警报。</li>
+            <li>查 <a href="https://en.vedur.is/" target="_blank">vedur.is</a> 天气和风。</li>
+            <li>不要越野，F 路只在开放且保险允许时走。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sources">
+      <h2>信息来源</h2>
+      <ul>
+        <li><a href="https://umferdin.is/en" target="_blank">Icelandic Road and Coastal Administration - road conditions</a></li>
+        <li><a href="https://safetravel.is/travel-conditions/" target="_blank">Safetravel Iceland - alerts and travel conditions</a></li>
+        <li><a href="https://www.visiticeland.com/article/driving-in-iceland/" target="_blank">Visit Iceland - driving in Iceland</a></li>
+        <li><a href="https://www.thingvellir.is/en/" target="_blank">Thingvellir National Park official site</a></li>
+        <li>图片来自 Wikimedia Commons 的可公开访问图片文件；地图底图来自 OpenStreetMap。</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="itinerary.js"></script>
+  <script src="map.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

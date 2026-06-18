@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1200" role="img" aria-label="Iceland road trip hero scene">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b9d7df"/>
+      <stop offset=".5" stop-color="#eef5f1"/>
+      <stop offset="1" stop-color="#225c68"/>
+    </linearGradient>
+  </defs>
+  <rect width="1800" height="1200" fill="url(#sky)"/>
+  <circle cx="1380" cy="230" r="105" fill="#f3cc7a" opacity=".7"/>
+  <path d="M0 790 C310 670 560 720 820 590 C1110 445 1360 470 1800 325 L1800 1200 L0 1200 Z" fill="#253d42"/>
+  <polygon points="190,900 570,340 940,900" fill="#dcebe7"/>
+  <polygon points="520,920 850,300 1235,920" fill="#607b62"/>
+  <polygon points="755,440 850,300 970,440" fill="#f8fbfa"/>
+  <path d="M0 1010 C320 930 590 1025 900 950 C1200 880 1490 930 1800 825 L1800 1200 L0 1200 Z" fill="#225c68" opacity=".62"/>
+</svg>

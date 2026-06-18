@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Iceland waterfall scene">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b9d7df"/>
+      <stop offset=".55" stop-color="#eef5f1"/>
+      <stop offset="1" stop-color="#7f9677"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fbfb"/>
+      <stop offset=".55" stop-color="#b8dfe5"/>
+      <stop offset="1" stop-color="#225c68"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sky)"/>
+  <circle cx="950" cy="150" r="68" fill="#f2ca7a" opacity=".75"/>
+  <path d="M0 560 C180 460 330 510 520 405 C725 290 900 330 1200 210 L1200 800 L0 800 Z" fill="#34483e"/>
+  <path d="M0 655 C220 590 410 650 640 585 C835 530 1010 585 1200 505 L1200 800 L0 800 Z" fill="#6e8066"/>
+  <path d="M660 235 L820 235 L780 800 L560 800 Z" fill="url(#water)"/>
+  <path d="M705 245 C650 390 730 495 670 800" fill="none" stroke="#fff" stroke-width="24" opacity=".72"/>
+  <path d="M775 250 C745 405 805 520 735 800" fill="none" stroke="#fff" stroke-width="18" opacity=".55"/>
+  <path d="M0 716 C225 650 405 715 620 660 C815 610 1010 650 1200 585 L1200 800 L0 800 Z" fill="#263b3f" opacity=".7"/>
+  <text x="72" y="104" fill="#fff" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="3">ICELAND</text>
+  <text x="72" y="158" fill="#fff" font-family="Arial, sans-serif" font-size="54" font-weight="700">Waterfalls</text>
+</svg>

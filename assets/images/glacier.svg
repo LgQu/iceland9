@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Iceland glacier lagoon scene">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d8eef3"/>
+      <stop offset=".52" stop-color="#f5fbfb"/>
+      <stop offset="1" stop-color="#7fa9b6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sky)"/>
+  <path d="M0 535 C230 455 370 500 555 400 C760 290 930 315 1200 205 L1200 800 L0 800 Z" fill="#31535f"/>
+  <path d="M155 635 L310 360 L455 635 Z M450 650 L645 305 L845 650 Z M780 645 L950 390 L1110 645 Z" fill="#f5fbfb"/>
+  <path d="M235 635 L310 360 L375 635 Z M565 650 L645 305 L732 650 Z" fill="#c8e7ee"/>
+  <path d="M0 682 C235 615 420 690 630 640 C855 585 1015 625 1200 560 L1200 800 L0 800 Z" fill="#4f93a2"/>
+  <path d="M160 714 C340 675 455 725 645 688 C835 650 975 695 1130 660" fill="none" stroke="#fff" stroke-width="16" opacity=".75"/>
+  <text x="72" y="104" fill="#173943" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="3">ICELAND</text>
+  <text x="72" y="158" fill="#173943" font-family="Arial, sans-serif" font-size="54" font-weight="700">Glacier Lagoon</text>
+</svg>
