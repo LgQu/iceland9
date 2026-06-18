@@ -33,10 +33,11 @@ function renderLinks(links) {
 
 function imageKind(label) {
   const text = String(label || "").toLowerCase();
+  if (/fuel|加油|n1|orkan|atlantsol/.test(text)) return "town";
   if (/foss|瀑布|gullfoss|skogafoss|seljalandsfoss|godafoss|dettifoss/.test(text)) return "waterfall";
   if (/jokulsarlon|diamond|glacier|冰川|蓝湖|lagoon/.test(text)) return "glacier";
   if (/reynis|beach|sand|海滩|黑沙|djupalon/.test(text)) return "beach";
-  if (/church|kirkja|教堂|harpa|reykjavik|akureyri|stykkisholmur|港/.test(text)) return "town";
+  if (/hotel|guesthouse|apartment|酒店|宾馆|旅馆|公寓|church|kirkja|教堂|harpa|reykjavik|akureyri|stykkisholmur|港/.test(text)) return "town";
   if (/hverir|geysir|kerid|viti|gunnuhver|地热|火山/.test(text)) return "geothermal";
   if (/kirkjufell|vestrahorn|arnarstapi|londrangar|峡湾|山/.test(text)) return "mountain";
   return "landscape";
@@ -132,21 +133,45 @@ const attractionNames = {
   "Londrangar": "Londrangar（隆德兰加尔海蚀柱）",
   "Stykkisholmur": "Stykkisholmur（斯蒂基斯霍尔米）",
   "Blue Lagoon": "Blue Lagoon（蓝湖）",
-  "Gunnuhver 与 Bridge Between Continents": "Gunnuhver & Bridge Between Continents（古努惠尔地热区与大陆桥）"
+  "Gunnuhver 与 Bridge Between Continents": "Gunnuhver & Bridge Between Continents（古努惠尔地热区与大陆桥）",
+  "Hotel Leifur Eiriksson": "Hotel Leifur Eiriksson（雷弗艾瑞克森酒店）",
+  "Hotel Eyjafjallajokull": "Hotel Eyjafjallajokull（埃亚菲亚德拉库尔酒店）",
+  "Guesthouse Hvammur": "Guesthouse Hvammur（哈莫宾馆）",
+  "Hildibrand Apartment Hotel": "Hildibrand Apartment Hotel（希尔迪布兰德公寓酒店）",
+  "Skulagardur Country Hotel & Restaurant": "Skulagardur Country Hotel & Restaurant（乡村酒店和餐厅）",
+  "Hotel Hvitserkur": "Hotel Hvitserkur（华姆斯唐吉酒店）",
+  "Guesthouse Hof": "Guesthouse Hof（霍夫旅馆）",
+  "Grindavik Guesthouse": "Grindavik Guesthouse（格林达维克旅馆）",
+  "N1 Reykjavik": "N1 Reykjavik（雷克雅未克加油站）",
+  "N1 Keflavik": "N1 Keflavik（凯夫拉维克加油站）",
+  "N1 Selfoss": "N1 Selfoss（塞尔福斯加油站）",
+  "N1 Hvolsvollur": "N1 Hvolsvollur（霍尔斯沃德吕尔加油站）",
+  "N1 Vik": "N1 Vik（维克加油站）",
+  "N1 Kirkjubaejarklaustur": "N1 Kirkjubaejarklaustur（教堂城加油站）",
+  "N1 Hofn": "N1 Hofn（赫本加油站）",
+  "N1 Egilsstadir": "N1 Egilsstadir（埃伊尔斯塔济加油站）",
+  "N1 Reykjahlid / Myvatn": "N1 Reykjahlid / Myvatn（雷克雅利兹 / 米湖加油站）",
+  "N1 Husavik": "N1 Husavik（胡萨维克加油站）",
+  "N1 Akureyri": "N1 Akureyri（阿克雷里加油站）",
+  "N1 Blonduos": "N1 Blonduos（布伦迪欧斯加油站）",
+  "N1 Borgarnes": "N1 Borgarnes（博尔加内斯加油站）",
+  "N1 Grundarfjordur": "N1 Grundarfjordur（格伦达菲厄泽加油站）",
+  "Orkan Stykkisholmur": "Orkan Stykkisholmur（斯蒂基斯霍尔米加油站）",
+  "Orkan Grindavik": "Orkan Grindavik（格林达维克加油站）"
 };
 
 globalThis.attractionNames = attractionNames;
 
 const driveLegs = {
-  1: ["约 5-10 分钟车程 / 15 分钟步行", "约 15 分钟车程"],
-  2: ["约 50 分钟车程", "约 10 分钟车程", "约 55-65 分钟车程"],
-  3: ["约 30 分钟车程", "约 35 分钟车程", "约 70-80 分钟车程", "约 2 小时车程", "约 5 分钟车程"],
-  4: ["约 2.5-3 小时车程，沿东峡湾边走边停", "约 1-1.5 小时车程"],
-  5: ["约 55-75 分钟车程，取决于 Dettifoss 道路选择", "约 10 分钟车程", "约 35-45 分钟车程", "约 45-60 分钟车程"],
-  6: ["约 55-75 分钟车程", "约 75-90 分钟车程", "约 60-75 分钟车程"],
-  7: ["约 10-15 分钟车程", "约 25-35 分钟车程", "约 20-30 分钟车程", "约 45-60 分钟车程"],
-  8: ["约 10-15 分钟车程", "约 20-30 分钟车程", "约 60-75 分钟车程"],
-  9: ["约 25-35 分钟车程"]
+  1: ["约 5-10 分钟车程 / 15 分钟步行", "约 15 分钟车程", "约 10-15 分钟车程"],
+  2: ["约 50 分钟车程", "约 10 分钟车程", "约 55-65 分钟车程", "约 60-75 分钟车程"],
+  3: ["约 30 分钟车程", "约 35 分钟车程", "约 70-80 分钟车程", "约 2 小时车程", "约 5 分钟车程", "约 60-80 分钟车程"],
+  4: ["约 2.5-3 小时车程，沿东峡湾边走边停", "约 1-1.5 小时车程", "约 60-90 分钟车程"],
+  5: ["约 55-75 分钟车程，取决于 Dettifoss 道路选择", "约 10 分钟车程", "约 35-45 分钟车程", "约 45-60 分钟车程", "约 45-60 分钟车程"],
+  6: ["约 55-75 分钟车程", "约 75-90 分钟车程", "约 60-75 分钟车程", "约 20-30 分钟车程"],
+  7: ["约 10-15 分钟车程", "约 25-35 分钟车程", "约 20-30 分钟车程", "约 45-60 分钟车程", "约 30-45 分钟车程"],
+  8: ["约 10-15 分钟车程", "约 20-30 分钟车程", "约 2.5-3 小时车程"],
+  9: ["约 25-35 分钟车程", "约 25-35 分钟车程"]
 };
 
 function displayAttractionName(name) {
@@ -158,11 +183,37 @@ function googleImagesUrl(name) {
 }
 
 function googleMapsRouteUrl(from, to) {
-  return `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(`${from} Iceland`)}&destination=${encodeURIComponent(`${to} Iceland`)}&travelmode=driving`;
+  return `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(mapQueryWithIceland(from))}&destination=${encodeURIComponent(mapQueryWithIceland(to))}&travelmode=driving`;
 }
 
 function googleMapsSearchUrl(name) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${name} Iceland`)}`;
+}
+
+function decodedMapStop(stop) {
+  return decodeURIComponent(stop.replace(/\+/g, " "));
+}
+
+function mapQueryWithIceland(query) {
+  const cleanQuery = String(query || "").trim();
+  if (!cleanQuery) return "Iceland";
+  if (/iceland|ísland/i.test(cleanQuery)) return cleanQuery;
+  return `${cleanQuery} Iceland`;
+}
+
+function googleMapsSearchQuery(url) {
+  if (!url) return "";
+  const queryMatch = url.match(/[?&]query=([^&]+)/);
+  if (queryMatch) return decodedMapStop(queryMatch[1]);
+
+  const pathMatch = url.match(/\/maps\/search\/(?:\?api=1&query=)?([^/?#]+)/);
+  if (pathMatch) return decodedMapStop(pathMatch[1]);
+
+  return "";
+}
+
+function attractionMapQuery(attraction) {
+  return googleMapsSearchQuery(attraction.mapUrl) || `${attraction.name} Iceland`;
 }
 
 function localImageUrl(label) {
@@ -251,38 +302,43 @@ function renderGallery(label, src) {
 
 function renderAttraction(attraction, dayNumber, index) {
   const id = `day-${dayNumber}-attraction-${index + 1}`;
+  const googleMapUrl = attraction.mapUrl || googleMapsSearchUrl(attraction.name);
+  const englishName = attractionMapQuery(attraction);
+  const typeClass = attraction.type ? `is-${attraction.type}` : "";
   return `
-    <article class="attraction" id="${id}">
-      <button class="attraction-summary" type="button" aria-expanded="false" aria-controls="${id}-details">
-        <span>
-          <span class="attraction-tag">${attraction.tag}</span>
-          <strong class="attraction-title-link" data-map-url="${attraction.mapUrl || googleMapsSearchUrl(attraction.name)}">${displayAttractionName(attraction.name)}</strong>
+    <article class="attraction ${typeClass}" id="${id}">
+      <div class="attraction-summary" role="button" tabindex="0" aria-expanded="false" aria-controls="${id}-details">
+        <span class="attraction-summary-content">
+          <span class="attraction-heading">
+            <span class="attraction-tag">${attraction.tag}</span>
+            <strong class="attraction-title-link" data-map-url="${googleMapUrl}">${displayAttractionName(attraction.name)}</strong>
+            <button class="button secondary copy-name-button compact" type="button" data-copy-text="${englishName}">复制英文名</button>
+          </span>
           <small>${attraction.stay}</small>
         </span>
         <span class="attraction-icon">+</span>
-      </button>
+      </div>
       <div class="attraction-details" id="${id}-details">
         ${renderGallery(attraction.name, attraction.image)}
         <div class="attraction-copy">
           <p>${attraction.intro}</p>
           ${renderBlock("看点", attraction.highlights)}
           ${renderBlock("注意事项", attraction.tips)}
-          <div class="links">
-            <a class="button secondary" href="${attraction.mapUrl || googleMapsSearchUrl(attraction.name)}" target="_blank">景点地图</a>
-          </div>
         </div>
       </div>
     </article>
   `;
 }
 
-function renderDriveLeg(day, index) {
-  const leg = driveLegs[day.day]?.[index];
-  const nextAttraction = day.attractions[index + 1];
+function renderDriveLeg(day, attractions, index, legIndex = index) {
+  const leg = driveLegs[day.day]?.[legIndex];
+  const nextAttraction = attractions[index + 1];
   if (!leg || !nextAttraction) return "";
-  const from = displayAttractionName(day.attractions[index].name);
+  const from = displayAttractionName(attractions[index].name);
   const to = displayAttractionName(nextAttraction.name);
-  const url = googleMapsRouteUrl(day.attractions[index].name, nextAttraction.name);
+  const fromQuery = attractionMapQuery(attractions[index]);
+  const toQuery = attractionMapQuery(nextAttraction);
+  const url = googleMapsRouteUrl(fromQuery, toQuery);
   return `
     <a class="drive-leg" href="${url}" target="_blank" aria-label="打开 Google Maps：${from} 到 ${to}">
       <span>车程</span>
@@ -293,15 +349,23 @@ function renderDriveLeg(day, index) {
 }
 
 function renderAttractions(day) {
-  if (!day.attractions || day.attractions.length === 0) return "";
+  const attractions = day.attractions || [];
+  const fuelStops = day.fuelStops || [];
+  const accommodation = day.accommodation;
+  if (attractions.length === 0 && fuelStops.length === 0 && !accommodation) return "";
+  const finalLegIndex = attractions.length - 1;
+  const finalLegItems = accommodation && attractions.length > 0 ? [attractions[attractions.length - 1], accommodation] : [];
   return `
     <section class="attractions">
       <h4>景点详情</h4>
       <div class="attraction-list">
-        ${day.attractions.map((attraction, index) => `
+        ${attractions.map((attraction, index) => `
           ${renderAttraction(attraction, day.day, index)}
-          ${renderDriveLeg(day, index)}
+          ${renderDriveLeg(day, attractions, index)}
         `).join("")}
+        ${fuelStops.map((fuelStop, index) => renderAttraction(fuelStop, day.day, attractions.length + index)).join("")}
+        ${accommodation && finalLegItems.length > 0 ? renderDriveLeg(day, finalLegItems, 0, finalLegIndex) : ""}
+        ${accommodation ? renderAttraction(accommodation, day.day, attractions.length + fuelStops.length) : ""}
       </div>
     </section>
   `;
@@ -344,10 +408,49 @@ function setCardOpen(card, open) {
   toggle.setAttribute("aria-expanded", String(open));
 }
 
+async function copyText(text) {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return;
+    } catch (error) {
+      // Fall back for local file previews or browsers that block Clipboard API.
+    }
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand("copy");
+  textarea.remove();
+}
+
+function showCopyResult(button, label) {
+  const originalLabel = button.dataset.originalLabel || button.textContent;
+  button.dataset.originalLabel = originalLabel;
+  button.textContent = label;
+  window.setTimeout(() => {
+    button.textContent = originalLabel;
+  }, 1400);
+}
+
 const daysContainer = document.querySelector("#days");
 daysContainer.innerHTML = itinerary.map(renderDay).join("");
 
 daysContainer.addEventListener("click", (event) => {
+  const copyButton = event.target.closest(".copy-name-button");
+  if (copyButton) {
+    event.stopPropagation();
+    copyText(copyButton.dataset.copyText)
+      .then(() => showCopyResult(copyButton, "已复制"))
+      .catch(() => showCopyResult(copyButton, "复制失败"));
+    return;
+  }
+
   const titleLink = event.target.closest(".attraction-title-link");
   if (titleLink) {
     event.stopPropagation();
@@ -368,6 +471,14 @@ daysContainer.addEventListener("click", (event) => {
   if (!toggle) return;
   const card = toggle.closest(".day-card");
   setCardOpen(card, !card.classList.contains("is-open"));
+});
+
+daysContainer.addEventListener("keydown", (event) => {
+  const attractionToggle = event.target.closest(".attraction-summary");
+  if (attractionToggle && (event.key === "Enter" || event.key === " ")) {
+    event.preventDefault();
+    attractionToggle.click();
+  }
 });
 
 document.querySelector("#expandAll").addEventListener("click", () => {
