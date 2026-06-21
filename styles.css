@@ -587,6 +587,34 @@ li { margin: 4px 0; }
   color: #58646a;
 }
 
+.attraction.is-grocery {
+  background: #f1f8ee;
+  border-color: #a9c995;
+}
+
+.attraction.is-grocery .attraction-summary {
+  background: #f1f8ee;
+}
+
+.attraction.is-grocery .attraction-summary:hover,
+.attraction.is-grocery.is-open .attraction-summary {
+  background: #e4f2dd;
+}
+
+.attraction.is-grocery .attraction-tag {
+  background: #2f6f45;
+  color: var(--white);
+}
+
+.attraction.is-grocery .attraction-title-link {
+  color: #235b37;
+}
+
+.attraction.is-grocery .attraction-icon {
+  background: #d9ebd0;
+  color: #235b37;
+}
+
 .attraction-details {
   display: none;
   grid-template-columns: 1fr;
