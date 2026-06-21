@@ -146,6 +146,10 @@ const itinerary = [
       {
         name: "Sky Lagoon",
         tag: "可选",
+        booking: {
+          label: "需预约",
+          text: "热门傍晚时段建议提前预约；若航班晚点或到达后疲劳，直接删掉不要硬赶。"
+        },
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/Sky%20Lagoon%20Iceland.jpg",
         intro: "首都圈的海景温泉，适合作为长途飞行后的恢复项目。它比蓝湖更靠近雷克雅未克市区，若你最后一天想把蓝湖留给机场前，这天选 Sky Lagoon 很顺。",
         stay: "2-3 小时",
@@ -232,11 +236,11 @@ const itinerary = [
     date: "6月23日 周二",
     title: "南岸一日高密度：瀑布、黑沙滩、冰川湖",
     drive: "约 430-490 km | 5.5-6.5 小时",
-    route: "Hella → Seljalandsfoss → Skogafoss → Reynisfjara → Vik → Fjadrargljufur → Jokulsarlon → Diamond Beach → Hofn",
+    route: "Hella → Seljalandsfoss → Skogafoss → Reynisfjara → Vik Church → Fjadrargljufur → Jokulsarlon → Diamond Beach → Hofn",
     image: "https://commons.wikimedia.org/wiki/Special:FilePath/Jokulsarlon%20Glacier%20Lagoon%20in%20Iceland.jpg",
     imageAlt: "Jokulsarlon 冰川湖",
     mustSee: ["Seljalandsfoss", "Skogafoss", "Reynisfjara", "Jokulsarlon", "Diamond Beach"],
-    optional: ["Dyrholaey 远眺黑沙滩，天气好再加。"],
+    optional: ["Vik Church 维克教堂，顺路短停看小镇和黑沙滩方向。", "Dyrholaey 远眺黑沙滩，天气好再加。"],
     notes: ["这是全程最硬的一天之一。建议早出发，午餐简单解决，别安排冰川徒步。", "住宿尽量订 Hofn 或冰川湖附近，第二天环东峡湾更顺。", "黑沙滩安全优先，不要靠近水线。"],
     cut: ["Kvernufoss → Dyrholaey → Fjadrargljufur"],
     accommodation: {
@@ -282,6 +286,16 @@ const itinerary = [
         mapUrl: "https://www.google.com/maps/search/?api=1&query=Reynisfjara+Beach"
       },
       {
+        name: "Vik Church",
+        tag: "可选",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/V%C3%ADkurkirkja%20in%20V%C3%ADk%2C%20Iceland.jpg",
+        intro: "Vik Church / Vikurkirkja 是维克小镇山坡上的白墙红顶教堂，位置很适合俯看小镇、黑沙滩和 Reynisdrangar 海蚀柱方向。它停留成本低，适合作为 Reynisfjara 之后的短暂停留。",
+        stay: "15-30 分钟",
+        highlights: ["白墙红顶教堂外观。", "维克小镇、海岸线和远处海蚀柱视野。"],
+        tips: ["停车和拍照尽量不影响教堂活动；如果 Day 3 时间明显落后，直接略过。"],
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=Vikurkirkja+Iceland"
+      },
+      {
         name: "Fjadrargljufur",
         tag: "可选",
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/Fja%C3%B0r%C3%A1rglj%C3%BAfur%20canyon%2C%20Iceland.jpg",
@@ -294,6 +308,10 @@ const itinerary = [
       {
         name: "Jokulsarlon 冰川湖",
         tag: "必看",
+        booking: {
+          label: "船游需预约",
+          text: "湖边自由参观不用预约；如果要坐两栖船或 Zodiac 船，提前订班次，并预留 40-60 分钟。"
+        },
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/Jokulsarlon%20Glacier%20Lagoon%20in%20Iceland.jpg",
         intro: "冰川从 Vatnajokull 边缘退缩形成的冰河湖，蓝白冰山漂浮在湖面，是南岸最震撼的景点之一。即使只停 30 分钟，也值得作为这天的核心目标。",
         stay: "45-90 分钟；坐船另加 40-60 分钟",
@@ -313,7 +331,7 @@ const itinerary = [
       }
     ],
     links: [
-      { label: "打开导航", url: "https://www.google.com/maps/dir/Hella/Seljalandsfoss/Sk%C3%B3gafoss/Reynisfjara+Beach/Vik/Fja%C3%B0r%C3%A1rglj%C3%BAfur/J%C3%B6kuls%C3%A1rl%C3%B3n+Glacier+Lagoon/Diamond+Beach/H%C3%B6fn" }
+      { label: "打开导航", url: "https://www.google.com/maps/dir/Hella/Seljalandsfoss/Sk%C3%B3gafoss/Reynisfjara+Beach/Vikurkirkja/Fja%C3%B0r%C3%A1rglj%C3%BAfur/J%C3%B6kuls%C3%A1rl%C3%B3n+Glacier+Lagoon/Diamond+Beach/H%C3%B6fn" }
     ]
   },
   {
@@ -422,6 +440,10 @@ const itinerary = [
       {
         name: "Myvatn 湖区",
         tag: "必看",
+        booking: {
+          label: "温泉需预约",
+          text: "湖区本身不用预约；若要泡 Myvatn Nature Baths，建议提前订票，并从 Krafla/Viti 或 Husavik 中删减时间。"
+        },
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20M%C3%BDvatn%2C%20Iceland.jpg",
         intro: "米湖不是单一观景台，而是一组火山、湖泊、熔岩和湿地景观。环岛时间紧，可以选 1-2 个点，不必全扫。",
         stay: "1-2 小时，按点位增减",
@@ -442,6 +464,10 @@ const itinerary = [
       {
         name: "Husavik",
         tag: "可选",
+        booking: {
+          label: "观鲸需预约",
+          text: "观鲸船班建议提前订；出发当天仍要按风浪、体力和晕船风险决定是否保留。"
+        },
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/H%C3%BAsav%C3%ADk%20Iceland.jpg",
         intro: "北部观鲸名镇，也适合住一晚看港口和海湾。问题是它会增加路程和时间，适合你愿意牺牲米湖部分点位时加入。",
         stay: "观鲸约 3 小时；小镇短停 45-90 分钟",
@@ -679,6 +705,10 @@ const itinerary = [
       {
         name: "Blue Lagoon",
         tag: "可选",
+        booking: {
+          label: "必须预约",
+          text: "蓝湖按入场时段售票，必须提前预约；同时确认 Reykjanes 火山活动、道路和蓝湖开放状态。"
+        },
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/Blue%20Lagoon%2C%20Iceland%20%282017%29.jpg",
         intro: "冰岛最知名的地热温泉之一，靠近 Keflavik 机场，适合作为返程前的放松安排。它商业化程度高，但便利性确实很好。",
         stay: "2-3 小时",

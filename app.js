@@ -20,6 +20,28 @@ function renderBlock(title, items, className = "", formatNames = false) {
   `;
 }
 
+function bookingItems(day) {
+  return (day.attractions || []).filter((attraction) => attraction.booking);
+}
+
+function renderBookingBadge(booking) {
+  if (!booking) return "";
+  return `<span class="booking-badge">${booking.label || "需预约"}</span>`;
+}
+
+function renderDayBookingAlert(day) {
+  const items = bookingItems(day);
+  if (items.length === 0) return "";
+  return `
+    <div class="booking-alert">
+      <h4>本日需要提前预约</h4>
+      <ul>
+        ${items.map((item) => `<li><strong>${displayAttractionName(item.name)}</strong>：${item.booking.text}</li>`).join("")}
+      </ul>
+    </div>
+  `;
+}
+
 function renderLinks(links) {
   if (!links || links.length === 0) return "";
   return `
@@ -57,6 +79,7 @@ const remoteImages = {
   "Seljalandsfoss": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Seljalandsfoss_Waterfall%2C_Iceland%2C_20240720_1501_3097.jpg/1280px-Seljalandsfoss_Waterfall%2C_Iceland%2C_20240720_1501_3097.jpg",
   "Skogafoss": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Sk%C3%B3gafoss_Waterfall%2C_Iceland%2C_20240720_1411_3075.jpg/1280px-Sk%C3%B3gafoss_Waterfall%2C_Iceland%2C_20240720_1411_3075.jpg",
   "Reynisfjara 黑沙滩": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Reynisfjara%2C_seen_from_Dyrh%C3%B3laey%2C_Iceland%2C_20240720_1024_2889.jpg/1280px-Reynisfjara%2C_seen_from_Dyrh%C3%B3laey%2C_Iceland%2C_20240720_1024_2889.jpg",
+  "Vik Church": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Vikurkirkja_Church%2C_Vik%2C_Iceland.jpg/1280px-Vikurkirkja_Church%2C_Vik%2C_Iceland.jpg",
   "Fjadrargljufur": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Fjadr%C3%A1rglj%C3%BAfur-pjt.jpg/1280px-Fjadr%C3%A1rglj%C3%BAfur-pjt.jpg",
   "Diamond Beach": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Diamond_Beach%2C_Iceland_-_Flickr_-_RickybanPhotography.jpg/1280px-Diamond_Beach%2C_Iceland_-_Flickr_-_RickybanPhotography.jpg",
   "Vestrahorn 与 Stokksnes": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Klifatindur_Vestrahorn_Island_B%C3%B6hringer.jpg/1280px-Klifatindur_Vestrahorn_Island_B%C3%B6hringer.jpg",
@@ -110,6 +133,7 @@ const attractionNames = {
   "Seljalandsfoss": "Seljalandsfoss（塞里雅兰瀑布）",
   "Skogafoss": "Skogafoss（斯科加瀑布）",
   "Reynisfjara 黑沙滩": "Reynisfjara Black Sand Beach（雷尼斯黑沙滩）",
+  "Vik Church": "Vik Church / Vikurkirkja（维克教堂）",
   "Fjadrargljufur": "Fjadrargljufur Canyon（羽毛峡谷）",
   "Jokulsarlon 冰川湖": "Jokulsarlon Glacier Lagoon（杰古沙龙冰川湖）",
   "Diamond Beach": "Diamond Beach（钻石沙滩）",
@@ -305,12 +329,14 @@ function renderAttraction(attraction, dayNumber, index) {
   const googleMapUrl = attraction.mapUrl || googleMapsSearchUrl(attraction.name);
   const englishName = attractionMapQuery(attraction);
   const typeClass = attraction.type ? `is-${attraction.type}` : "";
+  const bookingClass = attraction.booking ? "has-booking" : "";
   return `
-    <article class="attraction ${typeClass}" id="${id}">
+    <article class="attraction ${typeClass} ${bookingClass}" id="${id}">
       <div class="attraction-summary" role="button" tabindex="0" aria-expanded="false" aria-controls="${id}-details">
         <span class="attraction-summary-content">
           <span class="attraction-heading">
             <span class="attraction-tag">${attraction.tag}</span>
+            ${renderBookingBadge(attraction.booking)}
             <strong class="attraction-title-link" data-map-url="${googleMapUrl}">${displayAttractionName(attraction.name)}</strong>
             <button class="button secondary copy-name-button compact" type="button" data-copy-text="${englishName}">复制英文名</button>
           </span>
@@ -322,6 +348,7 @@ function renderAttraction(attraction, dayNumber, index) {
         ${renderGallery(attraction.name, attraction.image)}
         <div class="attraction-copy">
           <p>${attraction.intro}</p>
+          ${attraction.booking ? renderBlock("预约提示", [attraction.booking.text], "booking-detail") : ""}
           ${renderBlock("看点", attraction.highlights)}
           ${renderBlock("注意事项", attraction.tips)}
         </div>
@@ -387,6 +414,7 @@ function renderDay(day, index) {
           <button class="day-toggle" type="button" aria-label="展开或收起 Day ${day.day}" aria-expanded="${isOpen}">${isOpen ? "-" : "+"}</button>
         </div>
         <div class="day-details">
+          ${renderDayBookingAlert(day)}
           <div class="detail-grid">
             ${renderBlock("必看", day.mustSee, "", true)}
             ${renderBlock("可选", day.optional, "", true)}
