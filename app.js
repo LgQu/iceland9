@@ -56,6 +56,7 @@ function renderLinks(links) {
 function imageKind(label) {
   const text = String(label || "").toLowerCase();
   if (/fuel|加油|n1|orkan|atlantsol/.test(text)) return "town";
+  if (/grocery|supermarket|bonus|bónus|netto|nettó|kronan|krónan|hagkaup|kjorbudin|kjörbúðin|超市|采购/.test(text)) return "town";
   if (/foss|瀑布|gullfoss|skogafoss|seljalandsfoss|godafoss|dettifoss/.test(text)) return "waterfall";
   if (/jokulsarlon|diamond|glacier|冰川|蓝湖|lagoon/.test(text)) return "glacier";
   if (/reynis|beach|sand|海滩|黑沙|djupalon/.test(text)) return "beach";
@@ -166,6 +167,16 @@ const attractionNames = {
   "Hotel Hvitserkur": "Hotel Hvitserkur（华姆斯唐吉酒店）",
   "Guesthouse Hof": "Guesthouse Hof（霍夫旅馆）",
   "Grindavik Guesthouse": "Grindavik Guesthouse（格林达维克旅馆）",
+  "Hagkaup Skeifan": "Hagkaup Skeifan（雷克雅未克大型超市）",
+  "Kronan Hvolsvollur": "Kronan Hvolsvollur（霍尔斯沃德吕尔超市）",
+  "Netto Hofn": "Netto Hofn（赫本超市）",
+  "Netto Egilsstadir": "Netto Egilsstadir（埃伊尔斯塔济超市）",
+  "Bonus Egilsstadir": "Bonus Egilsstadir（埃伊尔斯塔济超市）",
+  "Netto Husavik": "Netto Husavik（胡萨维克超市）",
+  "Bonus Husavik": "Bonus Husavik（胡萨维克超市）",
+  "Kjorbudin Blonduos": "Kjorbudin Blonduos（布伦迪欧斯超市）",
+  "Bonus Borgarnes": "Bonus Borgarnes（博尔加内斯超市）",
+  "Bonus Reykjanesbaer": "Bonus Reykjanesbaer（雷克雅内斯拜尔超市）",
   "N1 Reykjavik": "N1 Reykjavik（雷克雅未克加油站）",
   "N1 Keflavik": "N1 Keflavik（凯夫拉维克加油站）",
   "N1 Selfoss": "N1 Selfoss（塞尔福斯加油站）",
@@ -189,7 +200,7 @@ globalThis.attractionNames = attractionNames;
 const driveLegs = {
   1: ["约 5-10 分钟车程 / 15 分钟步行", "约 15 分钟车程", "约 10-15 分钟车程"],
   2: ["约 50 分钟车程", "约 10 分钟车程", "约 55-65 分钟车程", "约 60-75 分钟车程"],
-  3: ["约 30 分钟车程", "约 35 分钟车程", "约 70-80 分钟车程", "约 2 小时车程", "约 5 分钟车程", "约 60-80 分钟车程"],
+  3: ["约 30 分钟车程", "约 35 分钟车程", "约 10-15 分钟车程", "约 70-80 分钟车程", "约 2 小时车程", "约 5 分钟车程"],
   4: ["约 2.5-3 小时车程，沿东峡湾边走边停", "约 1-1.5 小时车程", "约 60-90 分钟车程"],
   5: ["约 55-75 分钟车程，取决于 Dettifoss 道路选择", "约 10 分钟车程", "约 35-45 分钟车程", "约 45-60 分钟车程", "约 45-60 分钟车程"],
   6: ["约 55-75 分钟车程", "约 75-90 分钟车程", "约 60-75 分钟车程", "约 20-30 分钟车程"],
@@ -358,8 +369,10 @@ function renderAttraction(attraction, dayNumber, index) {
 }
 
 function renderDriveLeg(day, attractions, index, legIndex = index) {
-  const leg = driveLegs[day.day]?.[legIndex];
   const nextAttraction = attractions[index + 1];
+  const leg = attractions[index].driveToAccommodation && nextAttraction?.tag === "住宿"
+    ? attractions[index].driveToAccommodation
+    : driveLegs[day.day]?.[legIndex];
   if (!leg || !nextAttraction) return "";
   const from = displayAttractionName(attractions[index].name);
   const to = displayAttractionName(nextAttraction.name);
@@ -378,21 +391,24 @@ function renderDriveLeg(day, attractions, index, legIndex = index) {
 function renderAttractions(day) {
   const attractions = day.attractions || [];
   const fuelStops = day.fuelStops || [];
+  const groceryStops = day.groceryStops || [];
   const accommodation = day.accommodation;
-  if (attractions.length === 0 && fuelStops.length === 0 && !accommodation) return "";
+  if (attractions.length === 0 && fuelStops.length === 0 && groceryStops.length === 0 && !accommodation) return "";
+  const lastBeforeAccommodation = groceryStops[groceryStops.length - 1] || attractions[attractions.length - 1];
   const finalLegIndex = attractions.length - 1;
-  const finalLegItems = accommodation && attractions.length > 0 ? [attractions[attractions.length - 1], accommodation] : [];
+  const finalLegItems = accommodation && lastBeforeAccommodation ? [lastBeforeAccommodation, accommodation] : [];
   return `
     <section class="attractions">
-      <h4>景点详情</h4>
+      <h4>景点与补给详情</h4>
       <div class="attraction-list">
         ${attractions.map((attraction, index) => `
           ${renderAttraction(attraction, day.day, index)}
           ${renderDriveLeg(day, attractions, index)}
         `).join("")}
         ${fuelStops.map((fuelStop, index) => renderAttraction(fuelStop, day.day, attractions.length + index)).join("")}
+        ${groceryStops.map((groceryStop, index) => renderAttraction(groceryStop, day.day, attractions.length + fuelStops.length + index)).join("")}
         ${accommodation && finalLegItems.length > 0 ? renderDriveLeg(day, finalLegItems, 0, finalLegIndex) : ""}
-        ${accommodation ? renderAttraction(accommodation, day.day, attractions.length + fuelStops.length) : ""}
+        ${accommodation ? renderAttraction(accommodation, day.day, attractions.length + fuelStops.length + groceryStops.length) : ""}
       </div>
     </section>
   `;

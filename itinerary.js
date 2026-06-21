@@ -98,6 +98,75 @@ function fuel(...names) {
   });
 }
 
+const groceryStopCatalog = {
+  "Hagkaup Skeifan": {
+    zh: "雷克雅未克 Hagkaup 大型超市",
+    area: "首都圈大型综合超市，适合采购第二天早餐、路餐、水和常用补给",
+    mapQuery: "Hagkaup Skeifan Reykjavik Iceland"
+  },
+  "Kronan Hvolsvollur": {
+    zh: "霍尔斯沃德吕尔 Kronan 超市",
+    area: "南岸门户区域较大的补给点，适合住 Hotel Eyjafjallajokull 前采购",
+    mapQuery: "Kronan Hvolsvollur Iceland"
+  },
+  "Netto Hofn": {
+    zh: "赫本 Netto 超市",
+    area: "Hofn 镇内主要大型超市，适合南岸长距离结束后补货",
+    mapQuery: "Netto Hofn Iceland"
+  },
+  "Netto Egilsstadir": {
+    zh: "埃伊尔斯塔济 Netto 超市",
+    area: "东部核心城镇的大型补给点，适合进入东峡湾住宿前采购",
+    mapQuery: "Netto Egilsstadir Iceland"
+  },
+  "Bonus Egilsstadir": {
+    zh: "埃伊尔斯塔济 Bonus 超市",
+    area: "东部核心城镇的 Bonus 超市，适合进入东峡湾住宿前采购",
+    mapQuery: "Bonus Egilsstadir Iceland"
+  },
+  "Netto Husavik": {
+    zh: "胡萨维克 Netto 超市",
+    area: "北部海岸较大的采购点，适合前往乡村住宿前补齐晚餐和次日路餐",
+    mapQuery: "Netto Husavik Iceland"
+  },
+  "Bonus Husavik": {
+    zh: "胡萨维克 Bonus 超市",
+    area: "北部海岸的 Bonus 超市，适合前往乡村住宿前补齐晚餐和次日路餐",
+    mapQuery: "Bonus Husavik Iceland"
+  },
+  "Kjorbudin Blonduos": {
+    zh: "布伦迪欧斯 Kjorbudin 超市",
+    area: "北部西行途中较稳妥的采购点，适合转入 Vatnsnes / Hvitserkur 区域前采购",
+    mapQuery: "Kjorbudin Blonduos Iceland"
+  },
+  "Bonus Borgarnes": {
+    zh: "博尔加内斯 Bonus 超市",
+    area: "进入斯奈山半岛前的大型补给点，选择通常比半岛小镇更稳",
+    mapQuery: "Bonus Borgarnes Iceland"
+  },
+  "Bonus Reykjanesbaer": {
+    zh: "雷克雅内斯拜尔 Bonus 超市",
+    area: "机场和 Reykjanes 半岛附近的大型补给点，适合前往 Grindavik 前采购",
+    mapQuery: "Bonus Reykjanesbaer Iceland"
+  }
+};
+
+function grocery(name, driveToAccommodation = "") {
+  const stop = groceryStopCatalog[name];
+  return {
+    name,
+    type: "grocery",
+    tag: "采购",
+    image: "assets/images/town.svg",
+    intro: `${stop.area}。建议在入住前采购晚餐、早餐、车上零食、饮用水和纸巾等消耗品；营业时间和库存以当天地图或现场为准。`,
+    stay: "20-40 分钟",
+    highlights: [`${name} / ${stop.zh}。`, stop.area],
+    tips: ["冰岛乡村住宿附近餐饮和商店可能很少，尽量不要等到入住后再找超市。", "需要冷藏的食材少买，车上长时间停留时注意温度。"],
+    driveToAccommodation,
+    mapUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(stop.mapQuery)}`
+  };
+}
+
 const itinerary = [
   {
     day: 1,
@@ -122,6 +191,7 @@ const itinerary = [
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Hotel+Leifur+Eiriksson+Reykjavik"
     },
     fuelStops: fuel("N1 Keflavik", "N1 Reykjavik"),
+    groceryStops: [grocery("Hagkaup Skeifan", "约 10-15 分钟车程")],
     attractions: [
       {
         name: "Hallgrimskirkja",
@@ -185,6 +255,7 @@ const itinerary = [
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Hotel+Eyjafjallajokull"
     },
     fuelStops: fuel("N1 Selfoss", "N1 Hvolsvollur"),
+    groceryStops: [grocery("Kronan Hvolsvollur", "约 15-25 分钟车程")],
     attractions: [
       {
         name: "Thingvellir 国家公园",
@@ -254,6 +325,7 @@ const itinerary = [
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Guesthouse+Hvammur+Hofn"
     },
     fuelStops: fuel("N1 Hvolsvollur", "N1 Vik", "N1 Kirkjubaejarklaustur", "N1 Hofn"),
+    groceryStops: [grocery("Netto Hofn", "约 3-8 分钟车程")],
     attractions: [
       {
         name: "Seljalandsfoss",
@@ -357,6 +429,7 @@ const itinerary = [
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Hildibrand+Apartment+Hotel"
     },
     fuelStops: fuel("N1 Hofn", "N1 Egilsstadir"),
+    groceryStops: [grocery("Bonus Egilsstadir", "约 60-75 分钟车程")],
     attractions: [
       {
         name: "Stokksnes / Vestrahorn",
@@ -416,6 +489,7 @@ const itinerary = [
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Sk%C3%BAlagar%C3%B0ur+Country+Hotel+Restaurant"
     },
     fuelStops: fuel("N1 Egilsstadir", "N1 Reykjahlid / Myvatn", "N1 Husavik"),
+    groceryStops: [grocery("Bonus Husavik", "约 35-45 分钟车程")],
     attractions: [
       {
         name: "Dettifoss",
@@ -503,6 +577,7 @@ const itinerary = [
       mapUrl: "https://www.google.com/maps/search/?api=1&query=H%C3%B3tel+Hv%C3%ADtserkur"
     },
     fuelStops: fuel("N1 Akureyri", "N1 Blonduos"),
+    groceryStops: [grocery("Kjorbudin Blonduos", "约 50-65 分钟车程")],
     attractions: [
       {
         name: "Akureyri",
@@ -572,6 +647,7 @@ const itinerary = [
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Guesthouse+Hof+Iceland"
     },
     fuelStops: fuel("N1 Blonduos", "N1 Borgarnes", "N1 Grundarfjordur"),
+    groceryStops: [grocery("Bonus Borgarnes", "约 90-120 分钟车程")],
     attractions: [
       {
         name: "Ytri Tunga",
@@ -641,6 +717,7 @@ const itinerary = [
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Hotel+Leifur+Eiriksson+Reykjavik"
     },
     fuelStops: fuel("N1 Grundarfjordur", "Orkan Stykkisholmur", "N1 Borgarnes", "N1 Reykjavik"),
+    groceryStops: [grocery("Hagkaup Skeifan", "约 10-15 分钟车程")],
     attractions: [
       {
         name: "Djupalonssandur",
@@ -701,6 +778,7 @@ const itinerary = [
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Grindavik+Guesthouse"
     },
     fuelStops: fuel("N1 Reykjavik", "Orkan Grindavik", "N1 Keflavik"),
+    groceryStops: [grocery("Bonus Reykjanesbaer", "约 25-35 分钟车程")],
     attractions: [
       {
         name: "Blue Lagoon",
