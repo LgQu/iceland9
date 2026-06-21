@@ -10,7 +10,7 @@ const mapStops = [
   { day: "D3", name: "Seljalandsfoss", zh: "塞里雅兰瀑布", coords: [63.6156, -19.9886] },
   { day: "D3", name: "Skogafoss", zh: "斯科加瀑布", coords: [63.5321, -19.5114] },
   { day: "D3", name: "Reynisfjara", zh: "雷尼斯黑沙滩", coords: [63.4044, -19.0444] },
-  { day: "D3", name: "Vik", zh: "维克", coords: [63.4186, -19.0060] },
+  { day: "D3", name: "Vik Church", zh: "维克教堂", coords: [63.4193, -19.0064] },
   { day: "D3", name: "Fjadrargljufur", zh: "羽毛峡谷", coords: [63.7712, -18.1719] },
   { day: "D3", name: "Jokulsarlon", zh: "杰古沙龙冰川湖", coords: [64.0481, -16.1794] },
   { day: "D3", name: "Diamond Beach", zh: "钻石沙滩", coords: [64.0435, -16.1774] },
